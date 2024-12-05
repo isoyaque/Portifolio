@@ -116,9 +116,12 @@ main {
         padding: 2rem;
 
         & img {
-            height: auto;
             justify-content: center;
+            height: 75vh;
             width: 100%;
+            border-radius: 10%;
+            object-fit: cover;
+            object-position: top;
         }
     }
 
@@ -206,7 +209,7 @@ a {
 
 /* Keyframes */
 
-/* @keyframes surgir {
+@keyframes surgir {
     0% {
         opacity: 0;
     }
@@ -264,7 +267,7 @@ a {
         opacity: 100%;
     }
 
-} */
+}
 
 @media (max-width: 500px) {
 
