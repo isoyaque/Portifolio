@@ -135,78 +135,32 @@ a {
     transition: .3s;
     position: absolute;
     left: -300vw;
-    overflow-x: hidden;
+    overflow: hidden;
 
-
-
-
-    & span {
+    span {
         font-size: 5rem;
         text-align: center;
         display: block;
         margin: 1rem;
     }
 
-    & p {
-        text-align: center;
-        font-size: 2.5rem;
-        margin: 2rem;
-    }
-
-
-    & .porti {
-        display: flex;
-        justify-content: space-around;
-        margin: 0 auto;
-        width: 80vw;
-
-        & .site {
-            display: block;
-            background-color: rgba(255, 255, 255, 0.3);
+    .projeto {
+        a p {
+            color: white;
+            font-family: arial;
+            font-size: 2rem;
+            text-align: center;
+            margin: .2rem;
             padding: 1rem;
-            border-radius: 50%;
-            transition: 3s;
-            cursor: pointer;
-
-            & p {
-                color: black;
-                text-align: center;
-                text-decoration: none;
-                font-size: 1.5rem;
-                font-family: Arial, Helvetica, sans-serif;
-                font-weight: bold;
-                transition: 1S;
-                align-items: end;
-            }
-
-            & img {
-                display: block;
-                margin: 0 auto;
-                width: 10vw;
-                border-radius: 30%;
-                align-items: center;
-            }
+            transition: 1s all;
         }
 
-        & .site:hover {
-            transform: scale(1.1);
-            -webkit-box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 1);
-            -moz-box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 1);
-            box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 1);
-
-            & p {
-                color: white;
-                transform: scale(1.5);
-                text-shadow:
-                    1.5px 1.5px 0 #000,
-                    -1.5px 1.5px 0 #000,
-                    -1.5px -1.5px 0 #000,
-                    1.5px -1.5px 0 #000,
-                    .9rem .9rem .5rem #000;
-
-            }
+        a:hover p{
+            transform: scale(1.3);
         }
+
     }
+
 }
 
 .container3 {
@@ -248,9 +202,11 @@ a {
     }
 }
 
+
+
 /* Keyframes */
 
-@keyframes surgir {
+/* @keyframes surgir {
     0% {
         opacity: 0;
     }
@@ -308,12 +264,12 @@ a {
         opacity: 100%;
     }
 
-}
+} */
 
 @media (max-width: 500px) {
 
-    body{
-    overflow-x: hidden;
+    body {
+        overflow-x: hidden;
 
     }
 
@@ -334,20 +290,20 @@ a {
         }
     }
 
-    ul{
+    ul {
         display: flex;
         flex-direction: column;
 
-        & li{
+        & li {
             line-height: 2rem;
         }
     }
 
-    .container1{
+    .container1 {
         display: flex;
         flex-direction: column;
 
-        & p{
+        & p {
             text-wrap: wrap;
         }
     }

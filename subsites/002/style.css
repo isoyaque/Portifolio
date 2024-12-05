@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+.tabuleiro {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.square {
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgb(10, 10, 10);
+    height: 3.5vh;
+    margin: -1px;
+    width: 3.5vh;
+    box-sizing: border-box;
+    transition: .3s ;
+}
+
+.claro{
+    background-color: white;
+    border: 1px solid lightgray;
+}
