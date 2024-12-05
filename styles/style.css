@@ -158,7 +158,7 @@ a {
             transition: 1s all;
         }
 
-        a:hover p{
+        a:hover p {
             transform: scale(1.1);
         }
 
@@ -180,7 +180,7 @@ a {
         text-align: center;
     }
 
-    & a {
+    & a p {
         font-size: 2.5rem;
         padding: 2rem;
         color: white;
@@ -195,121 +195,127 @@ a {
 
     }
 
-    & a:hover {
+    #linkedin:hover p,
+    #insta:hover p,
+    #zap:hover p{
         transform: scale(1.3) rotateX(360deg);
-        color: #0077B5;
     }
 
-    & a:last-child:hover {
-        color: #c13584;
+    #linkedin:hover p{
+        color: #0e76a8 ;
+    }
+    #insta:hover p{
+        color: #E1306C   ;
+    }
+    #zap:hover p{
+        color: #25D366 ;
     }
 }
 
 
+    /* Keyframes */
 
-/* Keyframes */
-
-@keyframes surgir {
-    0% {
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 100%;
-    }
-
-}
-
-@keyframes surgir2 {
-    0% {
-        opacity: 0;
-    }
-
-    75% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 100%;
-    }
-
-}
-
-@keyframes surgir3 {
-    0% {
-        opacity: 0;
-    }
-
-    25% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 100%;
-    }
-
-}
-
-@keyframes surgirMain {
-    0% {
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 100%;
-    }
-
-}
-
-@media (max-width: 500px) {
-
-    body {
-        overflow-x: hidden;
-
-    }
-
-
-    .name {
-        margin: 15vh auto;
-        width: 90vw;
-
-        & h1 {
-            font-size: 6rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            line-height: 5rem;
+    @keyframes surgir {
+        0% {
+            opacity: 0;
         }
 
-        & p {
-            font-size: 1.5rem;
+        50% {
+            opacity: 0;
         }
+
+        100% {
+            opacity: 100%;
+        }
+
     }
 
-    ul {
-        display: flex;
-        flex-direction: column;
-
-        & li {
-            line-height: 2rem;
+    @keyframes surgir2 {
+        0% {
+            opacity: 0;
         }
+
+        75% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 100%;
+        }
+
     }
 
-    .container1 {
-        display: flex;
-        flex-direction: column;
-
-        & p {
-            text-wrap: wrap;
+    @keyframes surgir3 {
+        0% {
+            opacity: 0;
         }
+
+        25% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 100%;
+        }
+
     }
 
+    @keyframes surgirMain {
+        0% {
+            opacity: 0;
+        }
 
-}
+        50% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 100%;
+        }
+
+    }
+
+    @media (max-width: 500px) {
+
+        body {
+            overflow-x: hidden;
+
+        }
+
+
+        .name {
+            margin: 15vh auto;
+            width: 90vw;
+
+            & h1 {
+                font-size: 6rem;
+                text-align: center;
+                margin-bottom: 1rem;
+                line-height: 5rem;
+            }
+
+            & p {
+                font-size: 1.5rem;
+            }
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+
+            & li {
+                line-height: 2rem;
+            }
+        }
+
+        .container1 {
+            display: flex;
+            flex-direction: column;
+
+            & p {
+                text-wrap: wrap;
+            }
+        }
+
+
+    }
