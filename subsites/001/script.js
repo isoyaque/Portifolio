@@ -127,7 +127,6 @@ document.addEventListener('keydown', (e) => {
                 clearInterval(tiroInterval);
 
                 criarTiro.remove();
-                alert("Você acertou o inimigo!");
                 level += 1
                 levelInner.innerHTML = level
                 document.querySelector('.tirosE').removeChild(document.querySelector('.enemyfire'))
@@ -203,7 +202,6 @@ function enemyAtirar() {
             player.classList.add('finalBoss');
             inimigo.classList.add('finalBoss');
             iniciarGameOver()
-            alert("O inimigo acertou você!");
             jogadorVivo = false; // O jogador morreu
 
 
