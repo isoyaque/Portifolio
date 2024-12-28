@@ -14,6 +14,7 @@ let levelAtirar = levelAtirarFunc(level)
 
 let criarTiro;
 let possoAtirar = true;
+let inimigoPodeAtirar = true;
 
 // functions
 
@@ -31,14 +32,14 @@ function levelAndarFunc(n) {
 
 function levelAtirarFunc(n) {
     if (n == 1) {
-        return 1000
+        return 1500
     } else if (n == 2) {
-        return 800
+        return 1300
     } else if (n == 3) {
-        return 700
+        return 1200
     } else if (n == 4) {
-        return 500
-    }
+        return 1000
+    } else return 800
 }
 
 
@@ -58,12 +59,21 @@ function iniciarGameOver() {
     buttonR = document.createElement('button')
     buttonR.innerHTML = 'Recomeçar'
     buttonR.onclick = function () {
-        alert(' click recomeçar')
+        jogadorVivo = true;
+        possoAtirar = true;
+        level = 1;
+        levelInner.innerHTML = '1';
+        player.classList.remove('finalBoss');
+        inimigo.classList.remove('finalBoss');
+        document.querySelector('.gameOver')
+        game.removeChild(document.querySelector('.gameOver'))
+        inimigo.style.left = "50%"
+
     };
 
     buttonV = document.createElement('button')
     buttonV.innerHTML = 'Voltar ao portifólio'
-    buttonV.onclick = function (){
+    buttonV.onclick = function () {
         window.location.href = 'https://www.Luansouzadev.com.br';
     };
 
@@ -120,6 +130,11 @@ document.addEventListener('keydown', (e) => {
                 alert("Você acertou o inimigo!");
                 level += 1
                 levelInner.innerHTML = level
+                document.querySelector('.tirosE').removeChild(document.querySelector('.enemyfire'))
+                inimigoPodeAtirar = false;
+                setInterval(() => {
+                    inimigoPodeAtirar = true;
+                }, 1000);
             }
 
             if (posicaoTiro <= -2000) {
@@ -227,4 +242,4 @@ function colidiu(el1, el2) {
 }  // funcionando
 
 
-iniciarGameOver()
+// iniciarGameOver()
