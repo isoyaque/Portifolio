@@ -7,15 +7,74 @@ const tirosE = document.querySelector('.tirosE');
 const tirosP = document.querySelector('.tirosP');
 
 let jogadorVivo = true;  // Variável para controlar se o jogador está vivo
-let emvida = true;  // Variável para controlar se o inimigo está vivo
-let emvida2 = true;  
+
+let level = 1;
+let levelAndar = levelAndarFunc(level)
+let levelAtirar = levelAtirarFunc(level)
 
 let criarTiro;
 let possoAtirar = true;
-let level = 1;
-let tempoTiro = 1000 / level;
 
 // functions
+
+function levelAndarFunc(n) {
+    if (n == 1) {
+        return 1000
+    } else if (n == 2) {
+        return 800
+    } else if (n == 3) {
+        return 700
+    } else if (n == 4) {
+        return 500
+    }
+}
+
+function levelAtirarFunc(n) {
+    if (n == 1) {
+        return 1000
+    } else if (n == 2) {
+        return 800
+    } else if (n == 3) {
+        return 700
+    } else if (n == 4) {
+        return 500
+    }
+}
+
+
+function iniciarGameOver() {
+    tela = document.createElement('div')
+    tela.className = 'gameOver'
+
+    h3 = document.createElement('h3')
+    h3.innerHTML = 'Fim de jogo!'
+
+    p = document.createElement('p')
+    p.innerHTML = 'Obrigado por jogar'
+
+    div = document.createElement('div')
+    div.className = 'btns'
+
+    buttonR = document.createElement('button')
+    buttonR.innerHTML = 'Recomeçar'
+    buttonR.onclick = function () {
+        alert(' click recomeçar')
+    };
+
+    buttonV = document.createElement('button')
+    buttonV.innerHTML = 'Voltar ao portifólio'
+    buttonV.onclick = function (){
+        window.location.href = 'https://www.Luansouzadev.com.br';
+    };
+
+    tela.appendChild(h3)
+    tela.appendChild(p)
+    div.appendChild(buttonR)
+    div.appendChild(buttonV)
+    tela.appendChild(div)
+
+    game.appendChild(tela)
+}
 
 // player andar e atirar
 document.addEventListener('keydown', (e) => {
@@ -56,32 +115,31 @@ document.addEventListener('keydown', (e) => {
 
             if (colidiu(criarTiro, inimigo)) {
                 clearInterval(tiroInterval);
+
                 criarTiro.remove();
-                inimigo.remove();
                 alert("Você acertou o inimigo!");
-                emvida = false
-                level +=1
-                levelInner.innerHTML=level
-
-                Inimigodois()
-
+                level += 1
+                levelInner.innerHTML = level
             }
 
             if (posicaoTiro <= -2000) {
                 clearInterval(tiroInterval);
                 criarTiro.remove();
-            }
+            } // tiro passou, apagou o tiro
         }, 1);
 
         setTimeout(() => {
             canhao.classList.remove('aaa');
             possoAtirar = true;
-        }, 800);
+        }, 800); // evita que vire uma metralhadora
     }
-});
+}) // funcionando
 
 // Inimigo andar
 function enemyAndar(n) {
+
+    if (!jogadorVivo) return
+
     if (n == 1) {
         if (parseInt(inimigo.style.left) == 0) {
             posicaoAtual = 0;
@@ -99,17 +157,18 @@ function enemyAndar(n) {
         posicaoAtual += 5;
         inimigo.style.left = posicaoAtual + '%';
     }
-}
+} // arrumado - funcionando
 
 // Controle de movimento do inimigo
 setInterval(() => {
     let andar = Math.floor(Math.random() * 2) + 1;
     enemyAndar(andar);
-}, tempoTiro);
+}, levelAndar);
 
 // Inimigo atirar
 function enemyAtirar() {
-    if (!emvida) return;  // Se o inimigo morreu, ele não pode atirar
+
+    if (!jogadorVivo) return
 
     const inimigoAtirou = document.createElement('div');
     inimigoAtirou.className = 'enemyfire';
@@ -126,10 +185,13 @@ function enemyAtirar() {
         if (colidiu(inimigoAtirou, player)) {
             clearInterval(enemyTiroInterval);
             inimigoAtirou.remove();
-            player.remove();
+            player.classList.add('finalBoss');
+            inimigo.classList.add('finalBoss');
+            iniciarGameOver()
             alert("O inimigo acertou você!");
             jogadorVivo = false; // O jogador morreu
-            emvida = false;
+
+
         }
 
         if (posicaoTiro === 100) {
@@ -149,7 +211,7 @@ function enemyAtirar() {
 // Iniciar o intervalo de tiro do inimigo
 setInterval(() => {
     enemyAtirar();
-}, 2000);
+}, levelAtirar);
 
 // Função de colisão
 function colidiu(el1, el2) {
@@ -162,93 +224,7 @@ function colidiu(el1, el2) {
         rect1.top < rect2.bottom &&
         rect1.bottom > rect2.top
     );
-}
+}  // funcionando
 
 
-// Criar inimigo lvl 2
-
-function Inimigodois(){
-    let criarInimigo = document.createElement('div');
-    criarInimigo.classList = 'enemy dois'
-
-    let criarOlhoe = document.createElement('div')
-    criarOlhoe.classList= 'o dir'
-    let criarOlhod = document.createElement('div')
-    criarOlhod.classList= 'o esq'
-
-    criarInimigo.appendChild(criarOlhod)
-    criarInimigo.appendChild(criarOlhoe)
-
-    game.appendChild(criarInimigo)
-
-    setInterval(enemyNovoAtirar, 750)
-    setInterval(enemyNovoAtirar, 750)
-}
-
-function enemyNovoAtirar() {
-    let inimidodois = document.querySelector('.dois')
-
-    if (!emvida2) return;  // Se o inimigo morreu, ele não pode atirar
-
-    const inimigoAtirou = document.createElement('div');
-    inimigoAtirou.className = 'enemyfire';
-
-    let posicaoInimigo = parseInt(inimidodois.style.left || "30") + 5;
-    inimigoAtirou.style.left = posicaoInimigo + "%";
-    tirosE.appendChild(inimigoAtirou);
-
-    // Movendo o tiro do inimigo
-    let enemyTiroInterval = setInterval(() => {
-        let posicaoTiro = parseInt(inimigoAtirou.style.top || "10") + 25;
-        inimigoAtirou.style.top = posicaoTiro + '%';
-
-        if (colidiu(inimigoAtirou, player)) {
-            clearInterval(enemyTiroInterval);
-            inimigoAtirou.remove();
-            player.remove();
-            alert("O inimigo acertou você!");
-            jogadorVivo = false; // O jogador morreu
-            emvida = false;
-        }
-
-        if (posicaoTiro === 100) {
-            clearInterval(enemyTiroInterval);
-            inimigoAtirou.remove();
-        }
-    }, 10);
-
-    setTimeout(() => {
-        const div = tirosE.querySelector('.enemyfire');
-        if (div) {
-            div.remove();
-        }
-    }, 750);
-}
-
-function enemyNovoAndar(n) {
-    if (n == 1) {
-
-        let inimidodois = document.querySelector('.dois')
-
-        if (parseInt(inimidodois.style.left) == 0) {
-            posicaoAtual = 0;
-            inimidodois.style.left = posicaoAtual + '%';
-        }
-        let posicaoAtual = parseInt(inimidodois.style.left || "30");
-        posicaoAtual -= 5;
-        inimidodois.style.left = posicaoAtual + '%';
-    } else {
-        if (parseInt(inimidodois.style.left) >= 88) {
-            posicaoAtual = 88;
-            inimidodois.style.left = posicaoAtual + '%';
-        }
-        let posicaoAtual = parseInt(inimidodois.style.left || "30");
-        posicaoAtual += 5;
-        inimidodois.style.left = posicaoAtual + '%';
-    }
-}
-
-setInterval(() => {
-    let andar = Math.floor(Math.random() * 2) + 1;
-    enemyNovoAndar(andar);
-}, 1200);
+iniciarGameOver()

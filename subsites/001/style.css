@@ -19,6 +19,7 @@ body {
     text-align: center;
     display: block;
     z-index: 0;
+    overflow: hidden;
 }
 
 .game h1 {
@@ -44,7 +45,7 @@ body {
 }
 
 
-.o{
+.o {
     height: 2.5rem;
     width: 2.5rem;
     border-radius: 50%;
@@ -53,11 +54,11 @@ body {
     top: .5rem;
 }
 
-.esq{
+.esq {
     left: 1rem;
 }
 
-.dir{
+.dir {
     right: 1rem;
 }
 
@@ -173,27 +174,99 @@ body {
         rgb(255, 21, 40) 0rem 1rem 2rem;
     /* animation: tiroinimigo linear 2.5s; */
     z-index: 3;
-    left: 49.5%;   
+    left: 49.5%;
 }
 
-.tirosP,.tirosE{
+.tirosP,
+.tirosE {
     width: 100%;
     height: 5%;
     position: absolute;
 }
 
-.tirosE{
+.tirosE {
     top: 1.5rem;
 }
 
-.tirosP{
+.tirosP {
     bottom: 6.5rem;
 }
 
-.aaa{
+.aaa {
     transition: .1s;
     animation: aaa .5s linear;
     z-index: -3;
+}
+
+.finalBoss {
+    animation: fimDeJogo 1s linear forwards;
+}
+
+
+
+.gameOver {
+    position: absolute;
+    box-sizing: border-box;
+    background-color: rgb(31, 102, 255);
+    height: 80%;
+    width: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    border-radius: 1rem;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    transition: 1s;
+    animation: telaGameOver 1s linear forwards;
+    box-shadow: 5px 5px 15px gray;
+
+    h3 {
+        color: white;
+        font-family: arial;
+        font-size: 4rem;
+        cursor: default;
+        filter: drop-shadow( 1px 1px 0 black);
+    }
+
+    p {
+        cursor: default;
+        margin-top: 1rem;
+        color: white;
+        font-size: 2rem;
+        font-family: Arial, Helvetica, sans-serif;
+        filter: drop-shadow( 1px 1px 0 black);
+
+    }
+
+    .btns {
+        display: flex;
+        justify-content: space-around;
+        width: 80%;
+        margin: 0 auto;
+
+        button {
+            flex: 1;
+            margin: 1rem ;
+            margin-top: 5rem;
+            font-size: 1.5rem;
+            height: 4rem;
+            border: none;
+            border-radius: .5rem;
+            transition: .3s;
+            background-color: white;
+            cursor: pointer;
+            filter: drop-shadow(4px 7px 0px rgb(10, 10, 10));
+
+        }
+
+        button:active{
+            filter: drop-shadow(0px 0px 0 black);
+            transform: translate(5px, 8px);
+
+        }
+    }
 }
 
 @keyframes tiro {
@@ -216,16 +289,37 @@ body {
     }
 }
 
-@keyframes aaa{
-    0%{
+@keyframes aaa {
+    0% {
         transform: scale(1);
     }
-    5%{
-        transform: scale(1.3)
-        translateY(1rem);
+
+    5% {
+        transform: scale(1.3) translateY(1rem);
 
     }
-    40%{
+
+    40% {
         transform: scale(1);
+    }
+}
+
+@keyframes fimDeJogo {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes telaGameOver {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
