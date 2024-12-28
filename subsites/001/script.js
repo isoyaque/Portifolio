@@ -129,7 +129,12 @@ document.addEventListener('keydown', (e) => {
                 criarTiro.remove();
                 level += 1
                 levelInner.innerHTML = level
-                document.querySelector('.tirosE').removeChild(document.querySelector('.enemyfire'))
+                document.querySelector('.tirosE').removeChild(document.querySelector('.enemyfire'));
+                game.style.backgroundColor = 'rgb(255, 45, 45)'
+                setInterval(() => {
+                    game.style.backgroundColor = 'beige';
+                }, 100);
+
                 inimigoPodeAtirar = false;
                 setInterval(() => {
                     inimigoPodeAtirar = true;
