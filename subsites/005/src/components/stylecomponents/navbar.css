@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.navbar {
+    background: linear-gradient(rgb(252, 255, 214) 0%, rgb(253, 255, 131) 100%);
+}
+
+.navbar ul {
+    list-style: none;
+    justify-content: space-between;
+    width: 50%;
+    display: flex;
+    margin: auto;
+    padding: 1.5rem;
+
+
+    p {
+        font-size: 1.2rem;
+        transition: .5s;
+        color: rgb(105, 105, 26);
+    }
+
+    li {
+        flex: 1;
+        text-align: center;
+        border-left: 1px solid black;
+        cursor: pointer;
+    }  
+
+    li:last-child {
+        border-right: 1px solid black;
+    }
+
+    li:hover p {
+        transform: scale(1.2);
+        color: black;
+    }
+
+}
